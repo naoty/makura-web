@@ -30,15 +30,6 @@ app.configure('development', function(){
 });
 
 /**
- * Routes
- */
-var routes = {
-    root: require('./routes/root').root()
-};
-
-app.get('/', routes.root.index);
-
-/**
  * Server
  */
 var server = http.createServer(app).listen(app.get('port'), function(){
@@ -49,3 +40,13 @@ var server = http.createServer(app).listen(app.get('port'), function(){
  * socket.io
  */
 var io = socketio.listen(server);
+
+/**
+ * Routes
+ */
+var routes = {
+    root: require('./routes/root').root(io)
+};
+
+app.get('/', routes.root.index);
+app.post('/', routes.root.stream);
