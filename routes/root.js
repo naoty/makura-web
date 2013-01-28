@@ -6,6 +6,7 @@ exports.root = function (io) {
         stream: function (req, res) {
             var data = req.param('data');
             io.sockets.emit('stream', data);
+            res.send({});
         }
     };
 };
