@@ -19,7 +19,7 @@ $(function () {
         },
         yAxis: {
             min: 0,
-            max: null,
+            max: 1000,
             title: {
                 text: 'Pressure Unit'
             }

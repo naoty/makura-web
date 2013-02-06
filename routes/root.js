@@ -5,6 +5,7 @@ exports.root = function (io) {
         },
         stream: function (req, res) {
             var pressure = req.param('pressure');
+            console.log('Pressure: ' + pressure);
             io.sockets.emit('stream', pressure);
             res.send({});
         }
