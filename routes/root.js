@@ -4,8 +4,8 @@ exports.root = function (io) {
             res.render('root', { title: 'Express' });
         },
         stream: function (req, res) {
-            var data = req.param('data');
-            io.sockets.emit('stream', data);
+            var pressure = req.param('pressure');
+            io.sockets.emit('stream', pressure);
             res.send({});
         }
     };

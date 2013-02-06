@@ -19,21 +19,23 @@ $(function () {
         },
         yAxis: {
             min: 0,
-            max: 1
+            max: null,
+            title: {
+                text: 'Pressure Unit'
+            }
         },
         series: [{
-            data: [
-                getRandomPoint()
-            ]
+            data: [],
+            name: 'Pressure'
         }]
     });
 
     var socket = io.connect();
-    socket.on('stream', function (data) {
-        chart.series[0].addPoint(getRandomPoint(), true, false);
+    socket.on('stream', function (pressure) {
+        chart.series[0].addPoint(getPressurePoint(pressure), true, false);
     });
 
-    function getRandomPoint() {
-        return [(new Date()).getTime(), Math.random()];
+    function getPressurePoint(pressure) {
+        return [(new Date()).getTime(), parseFloat(pressure)];
     }
 });
