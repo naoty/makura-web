@@ -41,6 +41,11 @@ var server = http.createServer(app).listen(app.get('port'), function(){
  */
 var io = socketio.listen(server);
 
+// Surpress log output
+io.configure(function () {
+    io.set('log level', 1);
+});
+
 /**
  * Routes
  */
